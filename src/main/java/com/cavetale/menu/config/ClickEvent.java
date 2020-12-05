@@ -25,6 +25,9 @@ public final class ClickEvent {
     }
 
     public void onClick(Gui gui, Player player, InventoryClickEvent event, int index) {
+        if (close) {
+            player.closeInventory();
+        }
         for (String command : commands) {
             player.performCommand(command);
         }
@@ -40,10 +43,7 @@ public final class ClickEvent {
             sound.play(player);
         }
         if (openMenu != null) {
-            player.closeInventory();
             gui.getPlugin().openMenu(player, openMenu);
-        } else if (close) {
-            player.closeInventory();
         }
     }
 }
