@@ -6,7 +6,9 @@ import com.cavetale.menu.gui.Gui;
 import com.cavetale.menu.gui.GuiListener;
 import com.cavetale.menu.util.Yaml;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import lombok.Getter;
 import net.md_5.bungee.api.ChatColor;
@@ -57,7 +59,19 @@ public final class MenuPlugin extends JavaPlugin {
         menus.clear();
         File folder = new File(getDataFolder(), "menus");
         folder.mkdirs();
-        for (File file : folder.listFiles()) {
+        List<File> files = new ArrayList<>();
+        files.add(folder);
+        int total = 0;
+        while (!files.isEmpty()) {
+            if (total++ > 100) break;
+            File file = files.remove(0);
+            System.out.println(file);
+            if (file.isDirectory()) {
+                for (File file2: file.listFiles()) {
+                    files.add(file2);
+                }
+                continue;
+            }
             String name = file.getName();
             if (!name.endsWith(".yml")) continue;
             name = name.substring(0, name.length() - 4);

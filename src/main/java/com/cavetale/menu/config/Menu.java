@@ -66,6 +66,7 @@ public final class Menu {
             .menu(this)
             .size(size)
             .title(Text.colorize(title));
+        int lastIndex = 0;
         for (Slot slot : slots) {
             ItemStack itemStack;
             try {
@@ -73,6 +74,8 @@ public final class Menu {
             } catch (Exception e) {
                 throw new IllegalStateException("menu[" + id + "]", e);
             }
+            int index = slot.getIndex();
+            if (index < 0) index = lastIndex++;
             gui.setItem(slot.getIndex(), itemStack, event -> slot.onClick(gui, event));
         }
         if (autoSounds) {

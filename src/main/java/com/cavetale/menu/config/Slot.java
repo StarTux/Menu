@@ -32,8 +32,6 @@ public final class Slot {
             column = index % 9;
         } else if (row >= 0 && column >= 0) {
             index = row * 9 + column;
-        } else {
-            throw new IllegalStateException("index=" + index);
         }
         if (column > 8) throw new IllegalStateException("column=" + column);
         if (row > 6) throw new IllegalStateException("row=" + row);
