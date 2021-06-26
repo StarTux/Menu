@@ -1,5 +1,6 @@
 package com.cavetale.menu.config;
 
+import com.cavetale.core.font.DefaultFont;
 import com.cavetale.menu.MenuPlugin;
 import com.cavetale.menu.gui.Gui;
 import com.cavetale.menu.util.Effects;
@@ -8,6 +9,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import lombok.Data;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -65,7 +68,10 @@ public final class Menu {
         Gui gui = new Gui(plugin)
             .menu(this)
             .size(size)
-            .title(Text.colorize(title));
+            .title(Component.text()
+                   .append(DefaultFont.guiBlankOverlay(size))
+                   .append(Component.text(Text.colorize(title), NamedTextColor.WHITE))
+                   .build());
         int lastIndex = -1;
         for (Slot slot : slots) {
             ItemStack itemStack;
