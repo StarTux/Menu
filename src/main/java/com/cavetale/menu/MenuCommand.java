@@ -1,9 +1,10 @@
 package com.cavetale.menu;
 
+import com.cavetale.core.event.player.PluginPlayerEvent;
 import java.util.Collections;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import net.md_5.bungee.api.ChatColor;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -29,6 +30,7 @@ public final class MenuCommand implements TabExecutor {
             if (!plugin.openMenu(player, "main")) {
                 player.sendMessage(ChatColor.RED + "Main menu not found!");
             }
+            PluginPlayerEvent.Name.OPEN_MENU.call(plugin, player);
         } else if (args.length == 1) {
             if (!plugin.openMenu(player, args[0])) {
                 player.sendMessage(ChatColor.RED + "Unknown menu: " + args[0]);

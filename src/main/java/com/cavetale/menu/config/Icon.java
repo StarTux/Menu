@@ -4,7 +4,9 @@ import com.cavetale.menu.util.Text;
 import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Collectors;
 import lombok.Data;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
@@ -51,14 +53,18 @@ public final class Icon {
             List<String> lines = tooltipLines.stream()
                 .map(Text::colorize)
                 .collect(Collectors.toList());
-            meta.setDisplayName(lines.get(0));
-            meta.setLore(lines.subList(1, lines.size()));
+            meta.displayName(Component.text(lines.get(0)));
+            meta.lore(lines.subList(1, lines.size()).stream()
+                      .map(Component::text)
+                      .collect(Collectors.toList()));
         } else if (tooltip != null) {
             String[] toks = tooltip.split("\n", 2);
-            meta.setDisplayName(Text.colorize(toks[0]));
+            meta.displayName(Component.text(Text.colorize(toks[0])));
             if (toks.length == 2) {
-                List<String> lines = Text.wrapMultiline(Text.colorize(toks[1]), loreWidth);
-                meta.setLore(lines);
+                List<Component> lines = Text.wrapMultiline(Text.colorize(toks[1]), loreWidth).stream()
+                    .map(Component::text)
+                    .collect(Collectors.toList());
+                meta.lore(lines);
             }
         }
         itemStack.setItemMeta(meta);
