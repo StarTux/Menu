@@ -1,11 +1,11 @@
 package com.cavetale.menu;
 
+import com.cavetale.core.command.CommandNode;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
-import com.cavetale.core.command.CommandNode;
 
 @RequiredArgsConstructor
 public final class AdminCommand implements TabExecutor {

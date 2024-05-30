@@ -4,7 +4,6 @@ import com.cavetale.menu.util.Text;
 import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Collectors;
 import lombok.Data;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
@@ -44,7 +43,7 @@ public final class Icon {
         }
         ItemMeta meta = itemStack.getItemMeta();
         if (glow) {
-            meta.addEnchant(Enchantment.DURABILITY, 1, true); // ignoreLevelRestriction=true
+            meta.addEnchant(Enchantment.UNBREAKING, 1, true); // ignoreLevelRestriction=true
         }
         if (hide) {
             meta.addItemFlags(ItemFlag.values());

@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import lombok.Getter;
-import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -110,14 +109,14 @@ public final class MenuPlugin extends JavaPlugin {
         try {
             menu.testRestrictions(player);
         } catch (Restrictions.Error err) {
-            player.sendMessage(ChatColor.RED + err.getMessage());
+            player.sendMessage(err.getMessage());
             return true;
         }
         Gui gui;
         try {
             gui = menu.open(this, player);
         } catch (Exception e) {
-            player.sendMessage(ChatColor.RED + "An error has occured. Please contact an administrator.");
+            player.sendMessage("An error has occured. Please contact an administrator.");
             getLogger().warning("Error opening menu for " + player.getName() + ": " + menuId);
             e.printStackTrace();
         }
