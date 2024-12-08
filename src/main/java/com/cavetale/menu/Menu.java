@@ -20,13 +20,13 @@ import static net.kyori.adventure.text.format.TextColor.color;
 public final class Menu {
     private static final int SIZE = 6 * 9;
     private static final int[] HOTBAR_SLOTS = {4, 3, 5, 2, 6, 1, 7, 0, 8};
-    private static final int[] MENU_SLOTS = new int[5 * 9];
+    private static final int[] MENU_SLOTS = new int[4 * 9];
     private final Player player;
     private List<MenuItemEntry> entries = new ArrayList<>();
 
     static {
         for (int i = 0; i < MENU_SLOTS.length; i += 1) {
-            MENU_SLOTS[i] = i + 9;
+            MENU_SLOTS[i] = i + 18;
         }
     }
 
