@@ -61,7 +61,8 @@ public final class Menu {
             final int slot;
             switch (entry.getPriority()) {
             case SERVER:
-            case HOTBAR: {
+            case HOTBAR:
+            case NOTIFICATION: {
                 index = topBarIndex++;
                 if (index >= HOTBAR_SLOTS.length) {
                     continue;
@@ -77,6 +78,9 @@ public final class Menu {
                 slot = MENU_SLOTS[index];
             }
             gui.setItem(slot, entry.getIcon(), click -> onClick(click, entry));
+            if (entry.hasHighlightColor()) {
+                gui.highlight(slot, entry.getHighlightColor());
+            }
         }
         gui.open(player);
     }
