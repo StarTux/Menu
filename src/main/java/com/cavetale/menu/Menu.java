@@ -51,11 +51,11 @@ public final class Menu {
         Collections.sort(entries);
         int topBarIndex = 0;
         int menuIndex = 0;
-        final Gui gui = new Gui()
+        final Gui gui = new Gui(MenuPlugin.menuPlugin())
             .size(SIZE)
             .title(textOfChildren(DefaultFont.CAVETALE, text(" Main Menu")))
-            .layer(GuiOverlay.BLANK, color(0x003056))
-            .layer(GuiOverlay.TOP_BAR, color(0x15151D));
+            .layer(GuiOverlay.BLANK, color(0x1a4e77))
+            .layer(GuiOverlay.TOP_BAR, color(0x7990a2));
         for (MenuItemEntry entry : entries) {
             final int index;
             final int slot;
