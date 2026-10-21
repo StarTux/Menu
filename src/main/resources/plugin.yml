@@ -3,7 +3,7 @@ main: com.cavetale.menu.MenuPlugin
 name: Menu
 version: 0.1
 description: Chest Menus
-api-version: '26.1.2'
+api-version: '26.3'
 
 author: StarTux
 website: https://github.com/StarTux/Menu
